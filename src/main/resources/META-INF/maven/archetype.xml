@@ -1,0 +1,9 @@
+<archetype>
+  <id>WebMonitor</id>
+  <sources>
+    <source>src/main/UrlAvailabilityChecker/App.UrlAvailabilityChecker</source>
+  </sources>
+  <testSources>
+    <source>src/test/UrlAvailabilityChecker/AppTest.UrlAvailabilityChecker</source>
+  </testSources>
+</archetype>
