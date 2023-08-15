@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class UserInputManager {
-    private static final String USER_INPUT_MESSAGE = "Enter the URL to monitor: ";
-    private static final String INVALID_URL_MESSAGE = "Invalid URL format. Please enter a valid URL. Example Format: https://google.com or www.google.com";
+    private static final String USER_INPUT_MESSAGE = "Geben Sie die zu überwachende URL ein: ";
+    private static final String INVALID_URL_MESSAGE = "Ungültiges URL-Format. Bitte geben Sie eine gültige URL ein. Beispiel Format: https://example.com oder www.example.com";
 
     public static String fixUrl(String urlString) {
         if (!urlString.toLowerCase().startsWith("https://") && !urlString.toLowerCase().startsWith("http://")) {

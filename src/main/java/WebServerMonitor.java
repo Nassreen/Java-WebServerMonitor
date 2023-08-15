@@ -13,11 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 public class WebServerMonitor {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy h:mm:ss a");
-    private static final String REACHABLE_URL_MESSAGE = "reachable!";
-    private static final String NOT_REACHABLE_URL_MESSAGE = " not reachable!";
+    private static final String REACHABLE_URL_MESSAGE = "erreichbar!";
+    private static final String NOT_REACHABLE_URL_MESSAGE = " nicht erreichbar!";
     private static final String LOG_FILE_PATH = "availability_log.txt";
-    public static final String MONITORING_MESSAGE = " is being monitored. Press Enter to exit the program...";
-    public static final String EXIT_MESSAGE = "Exiting...";
+    public static final String MONITORING_MESSAGE = " überwacht wird, drücken Sie Enter, um das Programm zu beenden...";
+    public static final String EXIT_MESSAGE = "Beenden...";
 
     private static ScheduledExecutorService executorService;
 
