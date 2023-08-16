@@ -12,15 +12,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class WebServerMonitor {
+    private static final String LOG_FILE_PATH = "availability_log.txt"; // Path to the log file
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy h:mm:ss a");
     private static final String REACHABLE_URL_MESSAGE = "erreichbar!";
     private static final String NOT_REACHABLE_URL_MESSAGE = " nicht erreichbar!";
-    private static final String LOG_FILE_PATH = "availability_log.txt";
     public static final String MONITORING_MESSAGE = " überwacht wird, drücken Sie Enter, um das Programm zu beenden...";
     public static final String EXIT_MESSAGE = "Beenden...";
 
     private static ScheduledExecutorService executorService;
 
+    // Start monitoring the given URL at the specified interval
     public static void startMonitoring(String urlToCheck, int intervalInSeconds) {
         executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.scheduleAtFixedRate(
@@ -36,15 +37,18 @@ public class WebServerMonitor {
         }
     }
 
+    // Check the availability of the provided URL
 private static void checkAvailability(String urlToCheck) {
 
     String fixedUrl = UserInputManager.fixUrl(urlToCheck);
 
+    // Check if the URL is valid
     if (!UserInputManager.isValidUrl(urlToCheck)) {
         System.err.println("Invalid URL: " + fixedUrl);
         return;
     }
 
+    // Use Apache HttpClient to make a GET request to the URL
     try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
         HttpGet httpGet = new HttpGet(urlToCheck);
         try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
@@ -60,6 +64,7 @@ private static void checkAvailability(String urlToCheck) {
         writeLog(logEntry);
     }
 }
+    // Write a log entry to the log file
     private static void writeLog(String logEntry) {
         try (FileWriter writer = new FileWriter(LOG_FILE_PATH, true)) {
             writer.write(logEntry + "\n");
